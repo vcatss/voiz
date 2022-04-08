@@ -3,9 +3,9 @@
       <h2 class="text-blue-600 text-xl font-bold py-3">
           Sách mới
       </h2>
-      <div class="grid grid-cols-8 w-full gap-3">
-        <NuxtLink :to="`/${item.id}`" v-for="(item,index) in $attrs.value.slice(0,8)" :key="index">
-            <img class="rounded-lg shadow-md h-48" :src="item.avatar.thumb_url"/>
+      <div class="grid grid-cols-6 w-full gap-3">
+        <NuxtLink :to="`/${item.id}`" v-for="(item,index) in $attrs.value" :key="index">
+            <img v-if="item.avatar" class="rounded-lg shadow-md h-48" :src="item.avatar.thumb_url"/>
         </NuxtLink>
       </div>
   </div>
