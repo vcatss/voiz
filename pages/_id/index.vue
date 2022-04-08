@@ -43,7 +43,7 @@ Nơi Đó Có Tình Yêu Tình yêu thương là điều gần gũi, giản dị
                         <h2>
                             {{item.name}}
                         </h2>
-                        <span>
+                        <span v-if="item.duration" >
                             {{item.duration}}
                         </span>
                         <span>
@@ -85,8 +85,11 @@ export default {
         }
     },
     mounted(){
-        this.title = this.audioList[0].name;
-        //this.$refs.audioPlayer.play();
+        var vm = this;
+        vm.$nextTick(async ()=>{
+            this.title = this.audioList[0].name;
+            //this.$refs.audioPlayer.play();
+        })
     },
     methods: {
         // Use this function if you want to do something before you start playing
