@@ -4,8 +4,8 @@
           Gợi ý
       </h2>
       <div class="grid grid-cols-1 w-full gap-5">
-        <NuxtLink :to="`/${item.id}`" class="p-2 flex rounded-lg shadow-md" v-for="(item,index) in $attrs.value" :key="index">
-            <img class="rounded-lg shadow-md h-16" :src="item.avatar.thumb_url"/>
+        <NuxtLink :to="`/${item.slug}`" class="p-2 flex rounded-lg shadow-md" v-for="(item,index) in $attrs.value" :key="index">
+            <img class="rounded-lg shadow-md h-16" :src="`https://data.sachnoiviet.com.vn/audio/files/${item.id}/images/${item.id}.jpg`" />
             <span class="px-3 text-xs font-semibold">
                  {{item.name}}
             </span>

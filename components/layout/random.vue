@@ -4,8 +4,8 @@
           Sách mới
       </h2>
       <div class="grid grid-cols-6 w-full gap-3">
-        <NuxtLink :to="`/${item.id}`" v-for="(item,index) in $attrs.value" :key="index">
-            <img v-if="item.avatar" class="rounded-lg shadow-md h-48" :src="item.avatar.thumb_url"/>
+        <NuxtLink :to="`/${item.slug}`" v-for="(item,index) in model" :key="index">
+            <img class="rounded-lg shadow-md h-48" :src="`https://data.sachnoiviet.com.vn/audio/files/${item.id}/images/${item.id}.jpg`" />
         </NuxtLink>
       </div>
   </div>
@@ -15,7 +15,12 @@
 export default {
     data(){
         return {
-            model: []
+            
+        }
+    },
+    computed:{
+        model(){
+            return this.$attrs.value
         }
     },
     async mounted(){

@@ -20,8 +20,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/element', ssr: true},
-    { src: '~/plugins/audioplayer', ssr: false}
+    { src: '~/plugins/element', ssr: false},
+    { src: '~/plugins/audioplayer', ssr: false},
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -31,11 +32,19 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/auth',
     'nuxt-vuex-localstorage',
     ['@nuxtjs/moment', { locale: 'vi' }],
     ['@nuxtjs/dotenv', { systemvars: true }], //, filename: '.env'
   ],
+
+  recaptcha: {
+    /* reCAPTCHA options */
+    hideBadge: Boolean, // Hide badge element (v3 & v2 via size=invisible)
+    language: String,   // Recaptcha language (v2)
+    siteKey: String,    // Site key for requests
+    version: Number,     // Version
+    size: String        // Size: 'compact', 'normal', 'invisible' (v2)
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -43,14 +52,43 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:4000',
   },
-
+  auth: {
+    // Options
+    strategies: {
+      local: {
+        token: {
+          property: 'access_token',
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        redirect: {
+          login: '/dang-nhap',
+          logout: '/',
+          callback: '/dang-nhap',
+          home: '/'
+        },
+        user: {
+          property: 'username',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/auth/login', method: 'post' },
+          //logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/profile', method: 'get' }
+        }
+      }
+    }
+  },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {

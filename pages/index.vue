@@ -5,7 +5,7 @@
           <div class="col-span-5">
             <LayoutSlider class="col-span-5 w-full"></LayoutSlider>
             <LayoutTop v-model="model" class="w-full"></LayoutTop>
-            <LayoutSuggest class="py-10" v-model="suggest"></LayoutSuggest>
+            <!-- <LayoutSuggest class="py-10" v-model="suggest"></LayoutSuggest> -->
             <LayoutRandom v-model="random"></LayoutRandom>
           </div>
           <span>
@@ -21,11 +21,10 @@
 export default {
   name: 'IndexPage',
   async asyncData({ params, app }) {
-      let data = await app.$axios.get('https://api.voiz.vn/v1/playlists/new_contents');
-      let random = await app.$axios.get('https://api.voiz.vn/v1/playlists/random');
-      let suggest = await app.$axios.get('https://api.voiz.vn/v1/suggestions');
-      let recommend = await app.$axios.get("https://api.voiz.vn/v1/playlists/recommendation");
-      return {model : data.data.data, random: random.data.data, suggest: suggest.data.data, recommend: recommend.data.data}
+      let data = await app.$axios.get('/audio/top');
+      let random = await app.$axios.get('/audio/random')
+      let recommend = await app.$axios.get('/audio/suggest')
+      return {model : data.data[0].data, random: random.data[0].data, recommend: recommend.data[0].data}
   },
 }
 </script>
