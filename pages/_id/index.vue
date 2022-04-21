@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-center w-full my-10">
+  <div class="flex justify-center w-full my-10 relative">
+      <img v-shared-element:[model.id] class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images-small/${model.id}.jpg`" />
+      <img v-shared-element:[model.id] class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images/${model.id}.jpg`" />
       {{model}}
   </div>
 </template>
