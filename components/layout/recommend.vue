@@ -5,7 +5,7 @@
       </h2>
       <div class="grid grid-cols-1 w-full gap-5">
         <NuxtLink :to="`/${item.slug}`" class="p-2 flex rounded-lg shadow-md" v-for="(item,index) in $attrs.value" :key="index">
-            <img v-shared-element:[item.id] class="rounded-lg shadow-md h-16" :src="`https://data.sachnoiviet.com.vn/audio/files/${item.id}/images-small/${item.id}.jpg`" />
+            <img v-shared-element:[item.id] class="rounded-lg shadow-md h-16" :src="`https://data.sachnoiviet.com.vn/audio/files/${item.id}/images-thump/${item.id}.jpg`" />
             <span class="px-3 text-xs font-semibold">
                  {{item.name}}
             </span>

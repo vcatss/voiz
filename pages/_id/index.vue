@@ -1,8 +1,10 @@
 <template>
-  <div class="flex justify-center w-full my-10 relative">
-      <img v-shared-element:[model.id] class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images-small/${model.id}.jpg`" />
-      <img v-shared-element:[model.id] class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images/${model.id}.jpg`" />
-      {{model}}
+  <div class="flex justify-center w-full my-10">
+      <div class="flex w-full relative">
+        <img v-shared-element:[model.id] class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images-thump/${model.id}.jpg`" />
+        <img class="rounded-lg shadow-md h-[500px] absolute top-0" :src="`https://data.sachnoiviet.com.vn/audio/files/${model.id}/images/${model.id}.jpg`" />
+        {{model}}
+      </div>
   </div>
 </template>
 
@@ -24,7 +26,7 @@ export default {
     mounted(){
         var vm = this;
         vm.$nextTick(async ()=>{
-            //this.$refs.audioPlayer.play();
+            this.$store.commit("localStorage/updatePlayList", this.model.play_list);
         })
     },
     methods: {
