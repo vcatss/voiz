@@ -3,7 +3,9 @@ export const state = () => ({
 })
   
 export const mutations = {
-
+    updatePlayList(state,payload) {
+        state.playList = payload;
+    }
 }
 
 export const actions = {
