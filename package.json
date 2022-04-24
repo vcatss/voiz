@@ -17,6 +17,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/recaptcha": "^1.0.4",
+    "boxicons": "^2.1.2",
     "core-js": "^3.19.3",
     "element-ui": "^2.15.6",
     "flowbite": "^1.4.1",
