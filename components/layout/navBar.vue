@@ -8,11 +8,11 @@
                     </NuxtLink>
                     <section name="search" class="flex items-center ml-2 md:ml-10 border border-gray-200 px-3 rounded-lg">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <input class="py-2 px-4 bg-blue-600 w-64 outline-none" placeholder="Tim kiem" />
+                        <input @keyup.enter="search()" v-model="searchStr" class="py-2 px-4 bg-blue-600 w-64 outline-none" placeholder="Tim kiem" />
                     </section>
               </div>
           </div>
-          <div v-if="!this.$auth.user" class="hidden lg:flex items-center text-lg">
+          <div v-if="!$auth.user" class="hidden login lg:flex items-center text-lg text-white">
               <NuxtLink to="/dang-ky" class="mr-6">
                 Đăng ký
               </NuxtLink>
@@ -26,12 +26,24 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            searchStr: '',
+        }
+    },
+    methods: {
+        search(){
+            this.$router.push("/tim-kiem/" + this.searchStr);
+        }
+    }
 }
 </script>
 
 <style>
 li {
     @apply px-6 text-lg font-semibold
+}
+.login a {
+    @apply text-white
 }
 </style>

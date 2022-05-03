@@ -9,5 +9,7 @@ export const mutations = {
 }
 
 export const actions = {
-
+    clearPlayList({commit,state}, data) {
+        commit('updatePlayList', [])
+    }
 }

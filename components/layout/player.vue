@@ -1,5 +1,8 @@
 <template>
-  <div class="flex justify-center w-full bg-blue-600 text-white">
+  <div class="flex justify-center w-full bg-blue-600 text-white fixed">
+    <div @click="close()" class="">
+      close
+    </div>
     <div class="container pt-2 pb-1 grid grid-cols-1 w-full">
       <span @click="isOpen = !isOpen" class="px-6">
         <audio-player
@@ -41,6 +44,9 @@ export default {
       }
     },
     methods: {
+      close(){
+        this.$store.dispatch('localStorage/clearPlayList')
+      },
       handleBeforePlay(next){
         next()
       },
