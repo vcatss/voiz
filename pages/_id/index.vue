@@ -107,13 +107,9 @@ export default {
         handleBeforePlay(next) {
             next(); // Start play
         },
-        async play(item){
-            alert(item.id)
-            var data = await this.$axios.get(`http://localhost:4000/supplier/search/query?id=${item.id}&token=_kzKqMRtvktaJuhp9hddJQ`);
-            console.log(data)
-        },
         async playAt(index){
-            console.log(this.$root.$children.filter(p=>p._name == "<Layout>")[0].$refs.player.playAt(index))
+            console.log(this.$root.$children.filter(p=>p._name == "<Layout>")[0].$refs.player)
+            this.$root.$children.filter(p=>p._name == "<Layout>")[0].$refs.player.playAt(index)
         }
     },
 }
