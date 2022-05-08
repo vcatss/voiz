@@ -4,7 +4,7 @@
         <span class="pb-2">
             Đang hiển thị <b>{{model[0].total.rows}} </b> kết quả được tìm thấy
         </span>
-        <span class="grid grid-cols-4 gap-6 w-full">
+        <span class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
             <span class="shadow-md p-4 rounded-lg grid grid-cols-1" v-for="(item,index) in model[0].data" :key="index">
                 <div class="flex-noshink">
                     <div class="flex justify-center w-full">

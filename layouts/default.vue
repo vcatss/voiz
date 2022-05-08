@@ -5,10 +5,16 @@
         <LayoutNavBar></LayoutNavBar>
         <Nuxt class="pb-32 px-4"/>
         <client-only>
-            <LayoutPlayer v-if="$store.state.localStorage.playList.length>0"  class="fixed bottom-0 left-0 z-20"/>
+            <LayoutPlayer ref="player" v-if="$store.state.localStorage.playList.length>0"  class="fixed bottom-0 left-0 z-20"/>
         </client-only>
     </div>
 </template>
+
+<script>
+export default {
+    name: "Layout"
+}
+</script>
 
 <style lang="sass">
 @import "~bulma/sass/utilities/_all";
@@ -35,3 +41,32 @@ $link-focus-border: $primary;
 
 </style>
 
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>
