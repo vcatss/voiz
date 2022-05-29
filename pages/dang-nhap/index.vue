@@ -1,5 +1,6 @@
 <template>
   <div class="h-screen-fix justify-center items-center flex">
+      <!-- This is an example component -->
       <div class="flex flex-wrap w-[500px] shadow-md rounded-xl px-8 py-4 border border-blue-100">
         <section class="grid grid-cols-1 w-full gap-2 mb-2">
             <label>
@@ -24,6 +25,7 @@
 
 <script>
 export default {
+    layout:'blank',
     data(){
         return {
             model: {

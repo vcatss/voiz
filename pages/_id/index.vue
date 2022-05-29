@@ -65,7 +65,9 @@
                 <span @click="playAt(index)" v-for="(item,index) in model.play_list" :key="index" class="transition-all duration-500 flex shadow-md px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-400 hover:text-white" :class="{'bg-blue-500 text-white' : $store.state.localStorage.currentIndex == index}">
                     <span class="flex-grow">
                         <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                            <span class="w-[50px]">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                            </span>
                             <span class="ml-4">
                                 {{item.name}}
                             </span>
@@ -99,6 +101,7 @@ export default {
     mounted(){
         var vm = this;
         vm.$nextTick(async ()=>{
+            this.$store.commit('localStorage/updateIndex', 0)
             this.$store.commit("localStorage/updatePlayList", this.model.play_list);
         })
     },
